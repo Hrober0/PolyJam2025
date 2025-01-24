@@ -15,6 +15,6 @@ public class PlayerColor : MonoBehaviour
         props = new();
         rend.GetPropertyBlock(props);
         props.SetColor("_BaseColor", color);
-        rend.SetPropertyBlock(props);
+        rend.SetPropertyBlock(props, 1);
     }
 }

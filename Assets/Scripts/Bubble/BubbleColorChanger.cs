@@ -18,9 +18,9 @@ public class BubbleColorChanger : MonoBehaviour
         rend.SetPropertyBlock(props);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent(out PlayerColor playerColor))
+        if (other.gameObject.TryGetComponent(out PlayerColor playerColor))
         {
             SetColor(playerColor.Color);
         }
