@@ -1,0 +1,74 @@
+{
+    "name": "PlayerInputActins",
+    "maps": [
+        {
+            "name": "Player1",
+            "id": "fc259b1c-3dad-435d-800b-67ee176c1f3d",
+            "actions": [
+                {
+                    "name": "Reverse",
+                    "type": "Button",
+                    "id": "6c875d34-d2a4-43c8-bfff-9d694482544b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "a2e8b84a-187e-4f36-8d77-7236e76378bf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "9565a19d-6d4c-42f3-bbc6-0ea2717c1efc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0ef21e85-0f76-4fbc-ba31-1a14c84f5547",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reverse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1cdb53de-7881-4c09-8590-7aac60d73d1c",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e98b1d5e-34ed-4598-b17e-1071f72eab60",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
