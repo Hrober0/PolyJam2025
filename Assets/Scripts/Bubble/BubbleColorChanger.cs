@@ -20,7 +20,8 @@ public class BubbleColorChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out PlayerColor playerColor))
+        var playerColor = other.GetComponentInParent<PlayerColor>();
+        if (playerColor != null)
         {
             SetColor(playerColor.Color);
         }
