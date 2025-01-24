@@ -12,6 +12,9 @@ namespace HCore
         public static Vector3 To3D(this Vector2 vector2D) => new Vector3(vector2D.x, DEFAULT_Y, vector2D.y);
         public static Vector3 To3D(this Vector2 vector2D, float y) => new Vector3(vector2D.x, y, vector2D.y);
 
+        public static Vector3 To3D(this Vector2Int vector2D) => new Vector3(vector2D.x, DEFAULT_Y, vector2D.y);
+        public static Vector3 To3D(this Vector2Int vector2D, float y) => new Vector3(vector2D.x, y, vector2D.y);
+
         public static Vector2 To2D(this Vector3 vector3D) => new Vector2(vector3D.x, vector3D.z);
 
         public static void DrawPoint(this Vector2 point, Color color, float? duration = null) => DrawPoint(point.To3D(Y_2D_POSITION), color, duration);
@@ -37,5 +40,7 @@ namespace HCore
 
         public static Vector3Int Floor(this Vector3 v) => new(Mathf.FloorToInt(v.x), Mathf.FloorToInt(v.y), Mathf.FloorToInt(v.z));
         public static Vector3Int Round(this Vector3 v) => new(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y), Mathf.RoundToInt(v.z));
+
+        public static Vector2 Pow(this Vector2 v, int p) => new(Mathf.Pow(v.x, p), Mathf.Pow(v.y, p));
     }
 }
