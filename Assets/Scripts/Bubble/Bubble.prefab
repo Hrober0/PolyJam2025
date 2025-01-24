@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1630089901490067110}
   - component: {fileID: 5789121691881905298}
   - component: {fileID: 6458261133106726588}
+  - component: {fileID: 1662586386918668305}
   - component: {fileID: 7568899590216316460}
   - component: {fileID: 889483538387931009}
   m_Layer: 0
@@ -138,6 +139,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1662586386918668305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162513519553427464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc5c2b0038c1e44f80f9966d5417ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7568899590216316460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1355cba0e865db14b8f0226c7ebccdb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubble: {fileID: 1662586386918668305}
   paintTreshold: 0.05
   range: 0.3
 --- !u!114 &889483538387931009
@@ -164,4 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc252dbf37c3a8a4b93190cfc8e7c8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubble: {fileID: 1662586386918668305}
   rend: {fileID: 1630089901490067110}

@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class PlayerColor : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    [SerializeField] private int playerId = 1;
     [SerializeField] private Color color = Color.white;
 
     [SerializeField] private Renderer rend;
@@ -9,6 +10,7 @@ public class PlayerColor : MonoBehaviour
     private MaterialPropertyBlock props;
 
     public Color Color => color;
+    public int Id => playerId;
 
     private void Start()
     {

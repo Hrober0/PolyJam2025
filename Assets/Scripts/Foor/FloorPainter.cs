@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
 {
+    private const int NONE_OWNER = -1;
+    
     public event Action OnFillPercentChange;
 
     [SerializeField] private Renderer floorRenderer;
@@ -23,6 +25,7 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
     private MaterialPropertyBlock props;
     private float worldToArrayMultiplier;
 
+    private int[] ownedFileds;
     private Color32[] txtValues;
     private bool reqiredApply = false;
 
@@ -41,6 +44,9 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
         floorRenderer.GetPropertyBlock(props);
         props.SetTexture("_DirtyMask", floorTexture);
         floorRenderer.SetPropertyBlock(props);
+
+        ownedFileds = new int[txtValues.Length];
+        Array.Fill(ownedFileds, NONE_OWNER);
 
         FillTxt();
         StartCoroutine(BakeFloor());
@@ -71,24 +77,15 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
         }
         Apply();
     }
-    public void ClearFloor(Vector2 pos, float range)
+    public void ClearFloor(Vector2 pos, float range, Color playerColor, int playerId = NONE_OWNER)
     {
-        //pos.DrawPoint(Color.green);
+        range += blurLength * 0.5f;
+
+        pos.DrawPoint(Color.green);
         var min = TxtMinFromCenter(pos);
-        var r = range + blurLength * 0.5f;
-        RemoveFromTxt(min, r, 1);
-        reqiredApply = true;
-    }
-
-    private void Apply()
-    {
-        floorTexture.SetPixels32(txtValues);
-        floorTexture.Apply();
-    }
-
-    private void RemoveFromTxt(Vector2Int min, float range, float multiplier)
-    {
+        var multiplier = 1f;
         var hsize = Mathf.RoundToInt(range * worldToArrayMultiplier);
+        var playerColor32 = (Color32)playerColor;
 
         if (!circleCache.TryGetValue((hsize, multiplier), out var addValues))
         {
@@ -111,14 +108,26 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
             {
                 var index = yo + x;
                 var remValue = addValues[x - ox, y - oy];
-                var newValue = Mathf.Max(txtValues[index].a - remValue, 0);
                 ref var c = ref txtValues[index];
-                if (newValue < c.a)
+                var newValue = Mathf.Max(c.a - remValue, 0);
+                if (newValue < fillAcceptTreshhold)
                 {
-                    c.a = (byte)newValue;
+                    ownedFileds[index] = playerId;
                 }
+                c.r = playerColor32.r;
+                c.g = playerColor32.g;
+                c.b = playerColor32.b;
+                c.a = (byte)newValue;
             }
         }
+
+        reqiredApply = true;
+    }
+
+    private void Apply()
+    {
+        floorTexture.SetPixels32(txtValues);
+        floorTexture.Apply();
     }
 
     private Vector2Int TxtMinFromCenter(Vector2 point) => ((point - floorMin) * worldToArrayMultiplier).Floor();

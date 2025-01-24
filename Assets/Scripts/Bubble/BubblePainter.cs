@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BubblePainter : MonoBehaviour
 {
+    [SerializeField] private Bubble bubble;
     [SerializeField] private float paintTreshold = 0.05f;
     [SerializeField] private float range = 0.5f;
 
@@ -22,7 +23,15 @@ public class BubblePainter : MonoBehaviour
     {
         if (isGrounded)
         {
-            FloorPainter.Instance.ClearFloor(transform.position.To2D(), range);
+            var player = bubble.Player;
+            if (player != null)
+            {
+                FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, player.Color, player.Id);
+            }
+            else
+            {
+                FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, Color.clear);
+            }
         }
     }
 

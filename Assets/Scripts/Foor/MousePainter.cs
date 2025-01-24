@@ -13,7 +13,7 @@ public class MousePainter : MonoBehaviour
             var direction = raycastCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(direction, out RaycastHit hit))
             {
-                FloorPainter.Instance.ClearFloor(hit.point.To2D(), range);
+                FloorPainter.Instance.ClearFloor(hit.point.To2D(), range, Color.clear);
             }
         }
     }
