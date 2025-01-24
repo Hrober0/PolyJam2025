@@ -1,15 +1,23 @@
 using HCore;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorPainter : MonoBehaviour
+public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
 {
+    public event Action OnFillPercentChange;
+
     [SerializeField] private Renderer floorRenderer;
 
+    [Header("Space")]
     [SerializeField] private Vector2 floorMin;
     [SerializeField] private float worldSize = 10;
-    [SerializeField] private int resolution = 2048;
     [SerializeField] private float blurLength = 0.1f;
+
+    [Header("Settings")]
+    [SerializeField] private int resolution = 2048;
+    [SerializeField] private int fillAcceptTreshhold = 10;
 
     private Texture2D floorTexture;
     private MaterialPropertyBlock props;
@@ -19,6 +27,8 @@ public class FloorPainter : MonoBehaviour
     private bool reqiredApply = false;
 
     private readonly Dictionary<(int, float), int[,]> circleCache = new();
+
+    public float FillPercent { get; private set; }
 
     private void Start()
     {
@@ -33,14 +43,23 @@ public class FloorPainter : MonoBehaviour
         floorRenderer.SetPropertyBlock(props);
 
         FillTxt();
+        StartCoroutine(BakeFloor());
+        FillPercent = 0;
+        OnFillPercentChange?.Invoke();
     }
 
-    private void FixedUpdate()
+    private IEnumerator BakeFloor()
     {
-        if (reqiredApply)
+        while (true)
         {
-            reqiredApply = false;
-            Apply();
+            yield return new WaitForSeconds(0.05f);
+            if (reqiredApply)
+            {
+                reqiredApply = false;
+                Apply();
+                yield return null;
+                UpdateFillPercent();
+            }
         }
     }
 
@@ -127,5 +146,20 @@ public class FloorPainter : MonoBehaviour
             }
         }
         return values;
+    }
+
+    private void UpdateFillPercent()
+    {
+        var filledTiles = 0;
+        foreach (var c in txtValues)
+        {
+            if (c.a < fillAcceptTreshhold)
+            {
+                filledTiles++;
+            }
+        }
+
+        FillPercent = filledTiles / (float)txtValues.Length;
+        OnFillPercentChange?.Invoke();
     }
 }
