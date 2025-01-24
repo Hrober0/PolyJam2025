@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed;
-
+    private float direction;
     public int reverse = 1;
 
     public float left;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         transform.Rotate(Vector3.up, rotationSpeed * rotationDirection * reverse * Time.deltaTime);
-        transform.Translate(Vector3.forward * moveSpeed * reverse * Time.deltaTime);
+        transform.Translate(Vector3.forward * moveSpeed * direction * reverse * Time.deltaTime);
         //Debug.Log($"left {left}, right {right}, moveSpeed {moveSpeed}, rotationDirection {rotationDirection}");
     }
 
@@ -53,8 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetMoveDirection()
     {
-        moveSpeed = left + right;
-        moveSpeed /= 2;
+        direction = Mathf.Clamp(left + right, 0, 1);
     }
 
     public void SetRotationDirection()
