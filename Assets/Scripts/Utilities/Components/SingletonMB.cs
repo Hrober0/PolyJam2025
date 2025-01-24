@@ -5,6 +5,7 @@ using UnityEngine.Assertions;
 
 public interface ISingletonDontDestroy { }
 public interface ISingletonAutoCreate { }
+public interface ISingletonAutoFind { }
 
 public class SingletonMB<T> : MonoBehaviour where T : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class SingletonMB<T> : MonoBehaviour where T : MonoBehaviour
     {
         get
         {
-            if (typeof(T) is ISingletonAutoCreate)
+            if (instance == null && typeof(ISingletonAutoFind).IsAssignableFrom(typeof(T)))
+            {
+                instance = FindFirstObjectByType<T>();
+            }
+            if (instance == null && typeof(ISingletonAutoCreate).IsAssignableFrom(typeof(T)))
             {
                 var singleton = new GameObject();
                 singleton.name = nameof(T);
@@ -29,7 +34,7 @@ public class SingletonMB<T> : MonoBehaviour where T : MonoBehaviour
 
     private void Awake()
     {
-        Assert.IsNull(Instance);
+        Assert.IsFalse(Instance && Instance != this);
         Instance = this as T;
         if (typeof(T) is ISingletonDontDestroy)
         {
