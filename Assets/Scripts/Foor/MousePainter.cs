@@ -1,7 +1,7 @@
 using HCore;
 using UnityEngine;
 
-public class Painter : MonoBehaviour
+public class MousePainter : MonoBehaviour
 {
     [SerializeField] private Camera raycastCamera;
     [SerializeField] private float range;
