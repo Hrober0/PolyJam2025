@@ -29,7 +29,7 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
     private Color32[] txtValues;
     private bool reqiredApply = false;
 
-    private readonly Dictionary<(int, float), int[,]> circleCache = new();
+    private readonly Dictionary<(int, float), float[,]> shapeCache = new();
 
     public float FillPercent { get; private set; }
 
@@ -87,10 +87,10 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
         var hsize = Mathf.RoundToInt(range * worldToArrayMultiplier);
         var playerColor32 = (Color32)playerColor;
 
-        if (!circleCache.TryGetValue((hsize, multiplier), out var addValues))
+        if (!shapeCache.TryGetValue((hsize, multiplier), out var shapeValues))
         {
-            addValues = CreateCircleTexture(range, multiplier);
-            circleCache.Add((hsize, multiplier), addValues);
+            shapeValues = CreateCircleTexture(range, multiplier);
+            shapeCache.Add((hsize, multiplier), shapeValues);
         }
 
         var ox = min.x - hsize;
@@ -107,16 +107,17 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
             for (int x = sx; x < ex; x++)
             {
                 var index = yo + x;
-                var remValue = addValues[x - ox, y - oy];
+                var changePercent = shapeValues[x - ox, y - oy];
+                var remValue = (byte)(changePercent * 255);
                 ref var c = ref txtValues[index];
                 var newValue = Mathf.Max(c.a - remValue, 0);
                 if (newValue < fillAcceptTreshhold)
                 {
                     ownedFileds[index] = playerId;
                 }
-                c.r = playerColor32.r;
-                c.g = playerColor32.g;
-                c.b = playerColor32.b;
+                c.r = (byte)Mathf.Lerp(c.r, playerColor32.r, changePercent);
+                c.g = (byte)Mathf.Lerp(c.g, playerColor32.g, changePercent);
+                c.b = (byte)Mathf.Lerp(c.b, playerColor32.b, changePercent);
                 c.a = (byte)newValue;
             }
         }
@@ -132,16 +133,15 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
 
     private Vector2Int TxtMinFromCenter(Vector2 point) => ((point - floorMin) * worldToArrayMultiplier).Floor();
 
-    private int[,] CreateCircleTexture(float range, float multiplier)
+    private float[,] CreateCircleTexture(float range, float multiplier)
     {
         var size = Mathf.RoundToInt(range * 2 * worldToArrayMultiplier);
-        var values = new int[size, size];
+        var values = new float[size, size];
         var squerRange = Mathf.Pow(range * worldToArrayMultiplier, 2);
         var blurShift = Mathf.Pow((range - blurLength) * worldToArrayMultiplier, 2);
         var invSR = 1 / (squerRange - blurShift);
         var centerX = Mathf.RoundToInt(size / 2);
         var centerY = Mathf.RoundToInt(size / 2);
-        var blurToV = multiplier * 255;
         for (int y = 0; y < size; y++)
         {
             for (int x = 0; x < size; x++)
@@ -150,7 +150,7 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
                 if (squerDist < squerRange)
                 {
                     var bluredValue = Mathf.Clamp01(1 - (squerDist - blurShift) * invSR);
-                    values[x, y] = Mathf.FloorToInt(bluredValue * blurToV);
+                    values[x, y] = bluredValue * multiplier;
                 }
             }
         }
