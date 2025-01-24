@@ -424,12 +424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f5f764c29d37b478f2107a6f364131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  reverse: 1
-  left: 0
-  right: 0
-  rotationSpeed: 360
-  rotationDirection: 0
+  moveSpeed: 2
+  rotationSpeed: 90
 --- !u!114 &1946920861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,7 +455,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1946920860}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: ChangeDirection
+        m_MethodName: MoveBack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
