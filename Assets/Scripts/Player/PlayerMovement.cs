@@ -3,67 +3,79 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    float moveSpeed;
-    private float direction;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 100f;
+    [SerializeField] private Rigidbody rb;
 
-    private int left;
-    private int right;
+    private int left = 0;
+    private int right = 0;
     private int reverse = 1;
+    private float direction = 0f;
+    private float rotationDirection = 0f;
 
-    [SerializeField]
-    private float rotationSpeed;
-    private float rotationDirection;
-
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * rotationDirection * reverse * Time.deltaTime);
-        transform.Translate(Vector3.forward * moveSpeed * direction * reverse * Time.deltaTime);
+        Vector3 move = transform.forward * moveSpeed * direction * reverse * Time.fixedDeltaTime;
+
+        rb.MovePosition(rb.position + move);
+
+        float rotationAmount = rotationSpeed * rotationDirection * reverse * Time.fixedDeltaTime;
+
+        Quaternion deltaRotation = Quaternion.Euler(0f, rotationAmount, 0f);
+        rb.MoveRotation(rb.rotation * deltaRotation);
     }
 
     public void MoveLeft(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            left = (int)context.ReadValue<float>();
-            SetMoveDirection();
-            SetRotationDirection();
+            left = 1;
         }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            left = 0;
+        }
+        SetMoveDirection();
+        SetRotationDirection();
     }
 
     public void MoveRight(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            right = (int)context.ReadValue<float>();
-            SetMoveDirection();
-            SetRotationDirection();
+            right = 1;
         }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            right = 0;
+        }
+        SetMoveDirection();
+        SetRotationDirection();
     }
 
     public void MoveBack(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Performed)
+        if (context.phase == InputActionPhase.Performed)
         {
-            Debug.Log("MoveBack");
             reverse *= -1;
             SetMoveDirection();
             SetRotationDirection();
         }
     }
 
-    public void SetMoveDirection()
+    private void SetMoveDirection()
     {
         direction = Mathf.Clamp(left + right, 0, 1);
-        if(direction == 0 && reverse == -1)
+        if (direction == 0 && reverse == -1)
         {
             direction = 1;
         }
     }
 
-    public void SetRotationDirection()
+    private void SetRotationDirection()
     {
         rotationDirection = right - left;
+
         if (reverse == -1 && left == 1 && right == 1)
         {
             direction = 0;
