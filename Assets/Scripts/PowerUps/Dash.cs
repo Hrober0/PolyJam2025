@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour, IPowerUp
 {
-    private const float DASH_TIME = 0.016f;
+    private const float DASH_SPEED = 4f;
 
     private float dashRange;
+    private Rigidbody rb;
 
     public void SetUp(float dashRange)
     {
         this.dashRange = dashRange;
+        rb = GetComponent<Rigidbody>();
         GetComponent<ActiveCall>().OnActiveCall += () => DashMove();
     }
 
     private async Task DashMove()
     {
         Vector3 direction = transform.forward;
+        var remRange = dashRange;
 
-        while (dashRange > 0.2f)
+        while (remRange > 0)
         {
-            transform.Translate(direction * DASH_TIME * dashRange * 4f, Space.World);
-            dashRange -= DASH_TIME * dashRange * 4f;
-            await Awaitable.WaitForSecondsAsync(DASH_TIME);
+            rb.MovePosition(transform.position + direction * Time.fixedDeltaTime * remRange * DASH_SPEED);
+            remRange -= Time.fixedDeltaTime * dashRange * DASH_SPEED;
+            await Awaitable.WaitForSecondsAsync(Time.fixedDeltaTime);
         }
         Destroy(this);
     }

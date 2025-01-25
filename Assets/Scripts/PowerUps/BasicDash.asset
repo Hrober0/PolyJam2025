@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7740f0ecb686241a57dd34838b043d, type: 3}
   m_Name: BasicDash
   m_EditorClassIdentifier: 
-  dashRange: 5
+  dashRange: 7

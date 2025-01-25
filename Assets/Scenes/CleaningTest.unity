@@ -724,6 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 020302ec50a59e94b92b554b7bb17d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToSpawn: 10
   powerUps:
   - {fileID: 1302184732498547404, guid: a0a187474b621a34dbb7fefebd5befc6, type: 3}
   spawnRangeX: {x: 1, y: 9}
