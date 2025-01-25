@@ -539,6 +539,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RumbaTest
       objectReference: {fileID: 0}
+    - target: {fileID: 7756767496806158210, guid: 931679e0e5e43c2459a8b71807ef260a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -681,6 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1047866528}
+  - component: {fileID: 1047866529}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -707,73 +712,22 @@ Transform:
   - {fileID: 1472021306}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1184846924
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1184846927}
-  - component: {fileID: 1184846926}
-  - component: {fileID: 1184846925}
-  m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1184846925
+--- !u!114 &1047866529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184846924}
+  m_GameObject: {fileID: 1047866527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b0f675a91dd2d4eaa42948a96944ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 020302ec50a59e94b92b554b7bb17d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpName: Dash
---- !u!135 &1184846926
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184846924}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1184846927
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184846924}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.78, y: 0, z: 7.66}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  powerUps:
+  - {fileID: 1302184732498547404, guid: a0a187474b621a34dbb7fefebd5befc6, type: 3}
+  spawnRangeX: {x: 1, y: 9}
+  spawnRangeY: {x: 1, y: 9}
 --- !u!1 &1400610703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 46956710293609736, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 46956710293609736, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1493,6 +1447,10 @@ PrefabInstance:
     - target: {fileID: 3162513519553427464, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
       propertyPath: m_Name
       value: Bubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 6458261133106726588, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1547,9 +1505,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5566748219578780635, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
+      propertyPath: moveSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566748219578780635, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
+      propertyPath: rotationSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 7756767496806158210, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
       propertyPath: m_Name
       value: RumbaPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756767496806158210, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1569,4 +1539,3 @@ SceneRoots:
   - {fileID: 8901706945138126342}
   - {fileID: 739810338}
   - {fileID: 1047866528}
-  - {fileID: 1184846927}
