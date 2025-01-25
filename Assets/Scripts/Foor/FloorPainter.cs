@@ -111,13 +111,13 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
                 var remValue = (byte)(changePercent * 255);
                 ref var c = ref txtValues[index];
                 var newValue = Mathf.Max(c.a - remValue, 0);
-                if (newValue < fillAcceptTreshhold)
+                if (newValue < fillAcceptTreshhold && ownedFileds[index] == NONE_OWNER)
                 {
                     ownedFileds[index] = playerId;
+                    c.r = (byte)Mathf.Lerp(c.r, playerColor32.r, changePercent);
+                    c.g = (byte)Mathf.Lerp(c.g, playerColor32.g, changePercent);
+                    c.b = (byte)Mathf.Lerp(c.b, playerColor32.b, changePercent);
                 }
-                c.r = (byte)Mathf.Lerp(c.r, playerColor32.r, changePercent);
-                c.g = (byte)Mathf.Lerp(c.g, playerColor32.g, changePercent);
-                c.b = (byte)Mathf.Lerp(c.b, playerColor32.b, changePercent);
                 c.a = (byte)newValue;
             }
         }
