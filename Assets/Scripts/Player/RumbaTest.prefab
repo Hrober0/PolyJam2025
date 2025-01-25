@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7507396175033712189, guid: b5b59edf8f59a5b4b8ca7d4e126f474b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7041668117123388936}
+    - targetCorrespondingSourceObject: {fileID: 7507396175033712189, guid: b5b59edf8f59a5b4b8ca7d4e126f474b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3390326267021369400}
   m_SourcePrefab: {fileID: 100100000, guid: b5b59edf8f59a5b4b8ca7d4e126f474b, type: 3}
 --- !u!114 &5566748219578780635 stripped
 MonoBehaviour:
@@ -177,8 +180,40 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b0d53833-724f-4884-956b-470145559bef
     m_ActionName: 'Player2/Right[/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 64eb4d63-f51b-40b4-b0e8-c82ebec8f92e
+    m_ActionName: 'Player1/Dash[/Keyboard/upArrow]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3390326267021369400}
+        m_TargetAssemblyTypeName: ActiveCall, Assembly-CSharp
+        m_MethodName: CallActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a37d66a0-7a4d-40f1-9ee7-7a3530ae8ad4
+    m_ActionName: 'Player2/Dash[/Keyboard/w]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-3390326267021369400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7756767496806158210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf475a38cc97d04fb0b2e2a26e7b3d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
