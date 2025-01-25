@@ -8,8 +8,7 @@ public class Player : MonoBehaviour
 
     private MaterialPropertyBlock props;
 
-    public Color Color => playerData.color;
-    public int Id => (int)playerData.clientId;
+    public PlayerData Data => playerData;
 
     public void SetData(PlayerData playerData)
     {
@@ -25,7 +24,7 @@ public class Player : MonoBehaviour
 
     private void UpdateColor()
     {
-        props.SetColor("_BaseColor", Color);
+        props.SetColor("_BaseColor", playerData.color);
         rend.SetPropertyBlock(props, 1);
     }
 }

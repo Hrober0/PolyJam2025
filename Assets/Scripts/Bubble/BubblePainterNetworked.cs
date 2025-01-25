@@ -1,7 +1,8 @@
 using HCore;
+using Unity.Netcode;
 using UnityEngine;
 
-public class BubblePainter : MonoBehaviour
+public class BubblePainterNetworked : NetworkBehaviour
 {
     [SerializeField] private Bubble bubble;
     [SerializeField] private float paintTreshold = 0.05f;
@@ -12,26 +13,27 @@ public class BubblePainter : MonoBehaviour
 
     private void Update()
     {
-        if ((lastPos - transform.position).sqrMagnitude > paintTreshold)
+        if (IsServer && (lastPos - transform.position).sqrMagnitude > paintTreshold)
         {
-            Paint();
+            if (isGrounded)
+            {
+                PaintClientRpc();
+            }
             lastPos = transform.position;
         }
     }
 
-    private void Paint()
+    [ClientRpc]
+    private void PaintClientRpc()
     {
-        if (isGrounded)
+        var player = bubble.PlayerData;
+        if (player != null)
         {
-            var player = bubble.PlayerData;
-            if (player != null)
-            {
-                FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, player.Value.color, (int)player.Value.clientId);
-            }
-            else
-            {
-                FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, Color.clear);
-            }
+            FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, player.Value.color, (int)player.Value.clientId);
+        }
+        else
+        {
+            FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, Color.clear);
         }
     }
 
