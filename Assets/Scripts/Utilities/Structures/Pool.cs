@@ -6,6 +6,8 @@ public abstract class Pool<T>
 {
     protected readonly Stack<T> pool = new();
 
+    public int Taken { get; protected set; }
+
     public virtual T Get()
     {
         if (!pool.TryPop(out var item))
@@ -16,6 +18,7 @@ public abstract class Pool<T>
             autoReturn.OnReturnToPool += Return;
         }
 
+        Taken++;
         return item;
     }
 
@@ -30,6 +33,8 @@ public abstract class Pool<T>
         {
             autoReturn.OnReturnToPool -= Return;
         }
+
+        Taken--;
     }
 
     public abstract T CreateNewItem();

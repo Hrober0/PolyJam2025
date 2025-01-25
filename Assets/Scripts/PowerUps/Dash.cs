@@ -2,7 +2,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Dash : MonoBehaviour
+public class Dash : MonoBehaviour, IPowerUp
 {
     private const float DASH_TIME = 0.016f;
 
@@ -11,13 +11,7 @@ public class Dash : MonoBehaviour
     public void SetUp(float dashRange)
     {
         this.dashRange = dashRange;
-        GetComponent<ActiveCall>().OnActiveCall += StartDash;
-    }
-
-    private void StartDash()
-    {
-        Debug.Log("Dash");
-        DashMove();
+        GetComponent<ActiveCall>().OnActiveCall += () => DashMove();
     }
 
     private async Task DashMove()

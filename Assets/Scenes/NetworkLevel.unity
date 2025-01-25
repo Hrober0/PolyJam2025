@@ -727,7 +727,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 801715825}
-  - component: {fileID: 801715824}
+  - component: {fileID: 801715826}
+  - component: {fileID: 801715827}
   m_Layer: 0
   m_Name: PowerUpSpawner
   m_TagString: Untagged
@@ -735,22 +736,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &801715824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801715823}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020302ec50a59e94b92b554b7bb17d05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSpawn: 5
-  powerUps: []
-  spawnRangeX: {x: 0, y: 0}
-  spawnRangeY: {x: 0, y: 0}
 --- !u!4 &801715825
 Transform:
   m_ObjectHideFlags: 0
@@ -766,6 +751,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &801715826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801715823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3475192124
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &801715827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801715823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff851c43f409c8f4ebf4d04c6a3284d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  timeToSpawn: 5
+  powerUps:
+  - {fileID: -6170517850214587662, guid: 1bca3a8bf5fc59c41868ce2c0ca112d6, type: 3}
+  spawnRange:
+    min: {x: 1, y: 1}
+    max: {x: 9, y: 9}
 --- !u!1 &1047866527
 GameObject:
   m_ObjectHideFlags: 0
