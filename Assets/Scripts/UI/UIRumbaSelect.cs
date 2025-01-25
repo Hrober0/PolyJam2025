@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UIRumbaSelect : MonoBehaviour
 {
-    [SerializeField] private CharacterSelect select;
-
     [SerializeField] private Slider redSlider;
     [SerializeField] private Slider greenSlider;
     [SerializeField] private Slider bluelider;
@@ -18,7 +16,9 @@ public class UIRumbaSelect : MonoBehaviour
     {
         readyButton.onClick.AddListener(() =>
         {
-            select.SetPlayerReadyServerRpc(true);
+            var playerData = GameNM.Instance.GetCurrentPlayerData();
+            CharacterSelect.Instance.SetPlayerReadyServerRpc(
+                !CharacterSelect.Instance.IsPlayerReady(playerData.clientId));
         });
         redSlider.onValueChanged.AddListener((value) =>
         {

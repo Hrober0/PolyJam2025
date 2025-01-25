@@ -9,11 +9,13 @@ public class PlayerSelectVisual : MonoBehaviour
     private void Start()
     {
         GameNM.Instance.OnPlayerDataListChanged += UpdateVisual;
+        CharacterSelect.Instance.OnPlayerReadyChange += UpdateVisual;
         UpdateVisual();
     }
     private void OnDestroy()
     {
         GameNM.Instance.OnPlayerDataListChanged -= UpdateVisual;
+        CharacterSelect.Instance.OnPlayerReadyChange -= UpdateVisual;
     }
 
     private void UpdateVisual()
@@ -24,5 +26,7 @@ public class PlayerSelectVisual : MonoBehaviour
             return;
         }
         player.gameObject.SetActive(true);
+        var playerData = GameNM.Instance.GetPlayerData(playerIndex);
+        readyObject.SetActive(CharacterSelect.Instance.IsPlayerReady(playerData.clientId));
     }
 }

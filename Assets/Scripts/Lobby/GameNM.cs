@@ -41,6 +41,25 @@ public class GameNM : NetworkBehaviour
         return playerIndex < PlayerDataList.Count;
     }
 
+    public PlayerData GetPlayerData(int playerIndex)
+    {
+        return PlayerDataList[playerIndex];
+    }
+
+    public PlayerData GetCurrentPlayerData()
+    {
+        var localId = NetworkManager.Singleton.LocalClientId;
+        foreach (PlayerData playerData in PlayerDataList)
+        {
+            if (playerData.clientId == localId)
+            {
+                return playerData;
+            }
+        }
+        Debug.LogError("Current data not found");
+        return default;
+    }
+
     private void OnClientConnectedBack(ulong clientId)
     {
         PlayerDataList.Add(new PlayerData
