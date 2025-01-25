@@ -8,6 +8,7 @@ public static class Loader
     {
         Lobby,
         RumbaSelect,
+        NetworkLevel,
     }
 
     public static void LoadScene(Scene scene)

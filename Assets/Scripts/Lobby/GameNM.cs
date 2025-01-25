@@ -42,9 +42,21 @@ public class GameNM : NetworkBehaviour
         return playerIndex < PlayerDataList.Count;
     }
 
-    public PlayerData GetPlayerData(int playerIndex)
+    public PlayerData GetPlayerDataByIndex(int playerIndex)
     {
         return PlayerDataList[playerIndex];
+    }
+    public PlayerData GetPlayerDataById(ulong clientId)
+    {
+        foreach (PlayerData playerData in PlayerDataList)
+        {
+            if (playerData.clientId == clientId)
+            {
+                return playerData;
+            }
+        }
+        Debug.LogError($"Player data with id {clientId} not found");
+        return default;
     }
     public PlayerData GetCurrentPlayerData()
     {

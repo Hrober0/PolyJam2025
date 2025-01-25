@@ -45,6 +45,8 @@ public class CharacterSelect : NetworkBehaviour
         }
 
         Debug.Log("All Ready");
+
+        Loader.LoadScene(Loader.Scene.NetworkLevel);
     }
 
     public bool IsPlayerReady(ulong clientId)

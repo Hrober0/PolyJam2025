@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         UpdateColor();
     }
 
-    private void Start()
+    private void Awake()
     {
         props = new();
         rend.GetPropertyBlock(props);
