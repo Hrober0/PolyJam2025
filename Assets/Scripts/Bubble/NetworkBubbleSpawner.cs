@@ -23,8 +23,7 @@ public class NetworkBubbleSpawner : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void SpawnBubbleServerRpc(Vector3 pos)
     {
-        var instance = Instantiate(bubblePrefab, pos, Quaternion.identity);
-        instance.name = "1";
+        var instance = Instantiate(bubblePrefab, pos, Quaternion.identity);;
         var instanceNetworkObject = instance.GetComponent<NetworkObject>();
         instanceNetworkObject.Spawn();
     }
