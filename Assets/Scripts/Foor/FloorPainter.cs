@@ -69,7 +69,7 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
         }
     }
 
-    private void FillTxt()
+    public void FillTxt()
     {
         for (int i = 0; i < txtValues.Length; i++)
         {
