@@ -2,21 +2,30 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int playerId = 1;
-    [SerializeField] private Color color = Color.white;
+    [SerializeField] private PlayerData playerData;
 
     [SerializeField] private Renderer rend;
 
     private MaterialPropertyBlock props;
 
-    public Color Color => color;
-    public int Id => playerId;
+    public Color Color => playerData.color;
+    public int Id => (int)playerData.clientId;
+
+    public void SetData(PlayerData playerData)
+    {
+        this.playerData = playerData;
+        UpdateColor();
+    }
 
     private void Start()
     {
         props = new();
         rend.GetPropertyBlock(props);
-        props.SetColor("_BaseColor", color);
+    }
+
+    private void UpdateColor()
+    {
+        props.SetColor("_BaseColor", Color);
         rend.SetPropertyBlock(props, 1);
     }
 }

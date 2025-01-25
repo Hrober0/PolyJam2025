@@ -5,6 +5,7 @@ using UnityEngine;
 public struct PlayerData : IEquatable<PlayerData>, INetworkSerializable
 {
     public ulong clientId;
+    public Color color;
 
     public bool Equals(PlayerData other)
     {
@@ -14,5 +15,6 @@ public struct PlayerData : IEquatable<PlayerData>, INetworkSerializable
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
         serializer.SerializeValue(ref clientId);
+        serializer.SerializeValue(ref color);
     }
 }

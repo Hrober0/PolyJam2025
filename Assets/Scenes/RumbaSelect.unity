@@ -874,10 +874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25b41b1337f8ce45a7932d1820720de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  select: {fileID: 1688196238}
   redSlider: {fileID: 1898399367}
   greenSlider: {fileID: 1358973224}
-  bluelider: {fileID: 1741507480}
+  blueSlider: {fileID: 1741507480}
   readyButton: {fileID: 864623943}
 --- !u!1 &1049981273
 GameObject:

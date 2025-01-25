@@ -7,7 +7,7 @@ public class UIRumbaSelect : MonoBehaviour
 {
     [SerializeField] private Slider redSlider;
     [SerializeField] private Slider greenSlider;
-    [SerializeField] private Slider bluelider;
+    [SerializeField] private Slider blueSlider;
     [SerializeField] private Button readyButton;
 
     private Color color;
@@ -20,6 +20,7 @@ public class UIRumbaSelect : MonoBehaviour
             CharacterSelect.Instance.SetPlayerReadyServerRpc(
                 !CharacterSelect.Instance.IsPlayerReady(playerData.clientId));
         });
+
         redSlider.onValueChanged.AddListener((value) =>
         {
             UpdateColor(new Color(value, color.g, color.b));
@@ -28,29 +29,36 @@ public class UIRumbaSelect : MonoBehaviour
         {
             UpdateColor(new Color(color.r, value, color.b));
         });
-        bluelider.onValueChanged.AddListener((value) =>
+        blueSlider.onValueChanged.AddListener((value) =>
         {
             UpdateColor(new Color(color.r, color.g, value));
         });
 
-        GameNM.Instance.OnPlayerDataListChanged += UpdateClientsList;
-        UpdateClientsList();
-    }
-    private void OnDestroy()
-    {
-        GameNM.Instance.OnPlayerDataListChanged -= UpdateClientsList;
+        if (GameNM.Instance.IsCurrentPlayerDataSet())
+        {
+            UpdateSlider();
+        }
+        else
+        {
+            GameNM.Instance.OnPlayerDataListChanged += UpdateSlider;
+        }
     }
 
-    private void UpdateClientsList()
+    private void UpdateSlider()
     {
-        
+        GameNM.Instance.OnPlayerDataListChanged -= UpdateSlider;
+
+        var playerData = GameNM.Instance.GetCurrentPlayerData();
+        color = playerData.color;
+        //Debug.Log($"{color.r} {color.g} {color.b}");
+        redSlider.SetValueWithoutNotify(color.r);
+        greenSlider.SetValueWithoutNotify(color.g);
+        blueSlider.SetValueWithoutNotify(color.b);
     }
 
     private void UpdateColor(Color color)
     {
         this.color = color;
-        redSlider.value = color.r;
-        greenSlider.value = color.g;
-        bluelider.value = color.b;
+        GameNM.Instance.SetPlayerColorServerRpc(color);
     }
 }

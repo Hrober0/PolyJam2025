@@ -1,6 +1,7 @@
 using System;
 using Unity.Netcode;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameNM : NetworkBehaviour
 {
@@ -45,7 +46,6 @@ public class GameNM : NetworkBehaviour
     {
         return PlayerDataList[playerIndex];
     }
-
     public PlayerData GetCurrentPlayerData()
     {
         var localId = NetworkManager.Singleton.LocalClientId;
@@ -59,12 +59,25 @@ public class GameNM : NetworkBehaviour
         Debug.LogError("Current data not found");
         return default;
     }
+    public bool IsCurrentPlayerDataSet()
+    {
+        var localId = NetworkManager.Singleton.LocalClientId;
+        foreach (PlayerData playerData in PlayerDataList)
+        {
+            if (playerData.clientId == localId)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void OnClientConnectedBack(ulong clientId)
     {
         PlayerDataList.Add(new PlayerData
         {
             clientId = clientId,
+            color = GetRandomColor(),
         });
         Debug.Log($"Joined {clientId}");
     }
@@ -74,4 +87,30 @@ public class GameNM : NetworkBehaviour
         OnPlayerDataListChanged?.Invoke();
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    public void SetPlayerColorServerRpc(Color color, ServerRpcParams serverRpcParams = default)
+    {
+        SetPlayerColor(serverRpcParams.Receive.SenderClientId, color);
+    }
+    private void SetPlayerColor(ulong clientId, Color color)
+    {
+        for (int i = 0; i < PlayerDataList.Count; i++)
+        {
+            if (PlayerDataList[i].clientId == clientId)
+            {
+                var data = PlayerDataList[i];
+                data.color = color;
+                PlayerDataList[i] = data;
+            }
+        }
+    }
+    private Color GetRandomColor()
+    {
+        byte red = (byte)Random.Range(0, 255);
+        byte green = (byte)Random.Range(0, 255);
+        byte blue = (byte)Random.Range(0, 255);
+        byte alpha = 255;
+
+        return new Color32(red, green, blue, alpha);
+    }
 }

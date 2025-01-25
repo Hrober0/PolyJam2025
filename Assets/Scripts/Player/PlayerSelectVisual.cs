@@ -28,5 +28,6 @@ public class PlayerSelectVisual : MonoBehaviour
         player.gameObject.SetActive(true);
         var playerData = GameNM.Instance.GetPlayerData(playerIndex);
         readyObject.SetActive(CharacterSelect.Instance.IsPlayerReady(playerData.clientId));
+        player.SetData(playerData);
     }
 }
