@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     public void MoveLeft(InputAction.CallbackContext context) => MoveLeft(context.phase);
     public void MoveLeft(InputActionPhase action)
     {
-        Debug.Log($"{name} left {action}");
         if (action == InputActionPhase.Performed)
         {
             left = 1;
@@ -44,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
     public void MoveRight(InputAction.CallbackContext context) => MoveRight(context.phase);
     public void MoveRight(InputActionPhase action)
     {
-        Debug.Log($"{name} right {action}");
         if (action == InputActionPhase.Performed)
         {
             right = 1;

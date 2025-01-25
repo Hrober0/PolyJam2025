@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
     private const float DASH_TIME = 0.016f;
 
-    [SerializeField]
-    private float dashRange = 5f;
+    private float dashRange;
 
-    private void Start()
+    public void SetUp(float dashRange)
     {
+        this.dashRange = dashRange;
         GetComponent<ActiveCall>().OnActiveCall += StartDash;
     }
 

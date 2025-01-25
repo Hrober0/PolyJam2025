@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b0f675a91dd2d4eaa42948a96944ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpName: Dash
+  config: {fileID: 11400000, guid: f27085559f583fe49b8e5fa728272ede, type: 2}
 --- !u!54 &9056538651858369648
 Rigidbody:
   m_ObjectHideFlags: 0
