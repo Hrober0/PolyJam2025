@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  rotationSpeed: 270
+  rotationSpeed: 315
   rb: {fileID: 2456579941191409698}
 --- !u!114 &4768792410217950550
 MonoBehaviour:
