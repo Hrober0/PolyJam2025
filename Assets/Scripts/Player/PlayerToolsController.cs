@@ -7,6 +7,7 @@ public class PlayerToolsController : MonoBehaviour
     public enum Tool
     {
         Blower,
+        Knife,
     }
 
     [System.Serializable]
