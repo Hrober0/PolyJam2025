@@ -13,7 +13,6 @@ public class DashConfigSO : PowerUpConfigSO
         {
             return;
         }
-        var dash = target.AddComponent<Dash>();
-        dash.SetUp(dashRange);
+        target.AddComponent<Dash>().SetUp(dashRange);
     }
 }
