@@ -1349,18 +1349,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 46956710293609736, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 46956710293609736, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 46956710293609736, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 46956710293609736, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
       objectReference: {fileID: 0}
@@ -1400,10 +1388,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2522340184303386904, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 6445843573247450007, guid: 48cffbb8c6980f144a11c08ff9f7c304, type: 3}
     - target: {fileID: 3162513519553427464, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
       propertyPath: m_Name
       value: Bubble
