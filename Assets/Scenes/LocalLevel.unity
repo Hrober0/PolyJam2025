@@ -124,6 +124,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5611891765618748047, guid: 8f97e8dfff8f9894299b3fe91e1c1410, type: 3}
   m_PrefabInstance: {fileID: 1645001186}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &194475439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 194475441}
+  - component: {fileID: 194475440}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &194475440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194475439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020302ec50a59e94b92b554b7bb17d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToSpawn: 10
+  powerUps:
+  - {fileID: 1302184732498547404, guid: a0a187474b621a34dbb7fefebd5befc6, type: 3}
+  - {fileID: 6364975100432074963, guid: efb04590e2a578f4eb288880b3a49d51, type: 3}
+  - {fileID: 1302184732498547404, guid: a1b59087477ef0a4b8f0fcfc06e5579d, type: 3}
+  spawnRangeX: {x: 1, y: 9}
+  spawnRangeY: {x: 1, y: 9}
+--- !u!4 &194475441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194475439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5049145, y: -0.35682917, z: 8.780642}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &247303832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -821,7 +872,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1047866528}
-  - component: {fileID: 1047866529}
   m_Layer: 0
   m_Name: Ring
   m_TagString: Untagged
@@ -849,23 +899,6 @@ Transform:
   - {fileID: 1065019644}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1047866529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047866527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020302ec50a59e94b92b554b7bb17d05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSpawn: 10
-  powerUps:
-  - {fileID: 1302184732498547404, guid: a0a187474b621a34dbb7fefebd5befc6, type: 3}
-  spawnRangeX: {x: 1, y: 9}
-  spawnRangeY: {x: 1, y: 9}
 --- !u!1 &1065019643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,3 +1808,4 @@ SceneRoots:
   - {fileID: 931427499}
   - {fileID: 247303832}
   - {fileID: 535443648}
+  - {fileID: 194475441}
