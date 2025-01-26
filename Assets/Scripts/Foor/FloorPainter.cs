@@ -58,7 +58,7 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.03f);
             if (reqiredApply)
             {
                 reqiredApply = false;

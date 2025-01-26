@@ -11,6 +11,7 @@ public class PowerUpPickUp : MonoBehaviour
         if (player != null)
         {
             config.Apply(player.gameObject);
+            Destroy(gameObject);
         }
     }
 }

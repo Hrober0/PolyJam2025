@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubble: {fileID: 1662586386918668305}
-  paintTreshold: 0.05
+  paintTreshold: 0.03
   range: 0.3
 --- !u!114 &889483538387931009
 MonoBehaviour:
