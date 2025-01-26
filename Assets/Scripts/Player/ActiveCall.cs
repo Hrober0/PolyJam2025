@@ -3,8 +3,7 @@ using UnityEngine.InputSystem;
 
 public class ActiveCall : MonoBehaviour
 {
-    public void CallActive(InputAction.CallbackContext context) => CallActive(context.phase);
-    public void CallActive(InputActionPhase action)
+    public void CallActive(InputAction.CallbackContext context)
     {
         OnActiveCall?.Invoke();
     }

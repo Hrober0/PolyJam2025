@@ -5,11 +5,20 @@ public class Bubble : MonoBehaviour
 {
     public event Action OnPlayerChanged;
 
-    public PlayerData? PlayerData { get; private set; }
+    public Player Player { get; private set; }
 
-    public void SetPlayer(PlayerData data)
+    public void SetPlayer(Player player)
     {
-        PlayerData = data;
+        Player = player;
         OnPlayerChanged?.Invoke();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var player = other.GetComponentInParent<Player>();
+        if (player != null)
+        {
+            SetPlayer(player);
+        }
     }
 }

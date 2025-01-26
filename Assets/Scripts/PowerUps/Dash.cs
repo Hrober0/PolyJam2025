@@ -1,26 +1,38 @@
 using System.Collections;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Dash : MonoBehaviour, IPowerUp
+public class Dash : MonoBehaviour
 {
-    private float dashRange;
-    private Rigidbody rb;
-    private ActiveCall call;
+    private const float DASH_TIME = 0.016f;
 
-    public void SetUp(float dashRange)
+    [SerializeField]
+    private float dashRange = 10f;
+    Rigidbody rb;
+
+    private void Start()
     {
-        this.dashRange = dashRange;
+        GetComponent<ActiveCall>().OnActiveCall += StartDash;
         rb = GetComponent<Rigidbody>();
-        call = GetComponent<ActiveCall>();
-        call.OnActiveCall += DashMove;
     }
 
-    private void DashMove()
+    private void StartDash()
     {
-        call.OnActiveCall -= DashMove;
-        rb.AddForce(transform.forward * dashRange, ForceMode.Impulse);
+        Debug.Log("Dash");
+        DashMove();
+    }
+
+    private async Task DashMove()
+    {
+        Vector3 direction = transform.forward;
+
+        while (dashRange > 0.2f)
+        {
+            rb.MovePosition(transform.position + direction * DASH_TIME * dashRange * 4f);
+            dashRange -= DASH_TIME * dashRange * 4f;
+            await Awaitable.WaitForSecondsAsync(DASH_TIME);
+        }
         Destroy(this);
     }
 }

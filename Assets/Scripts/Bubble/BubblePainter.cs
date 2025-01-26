@@ -23,10 +23,10 @@ public class BubblePainter : MonoBehaviour
     {
         if (isGrounded)
         {
-            var player = bubble.PlayerData;
+            var player = bubble.Player;
             if (player != null)
             {
-                FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, player.Value.color, (int)player.Value.clientId);
+                FloorPainter.Instance.ClearFloor(transform.position.To2D(), range, player.Color, player.Id);
             }
             else
             {

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7507396175033712189}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.051293, y: 0, z: 3.0865383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82,7 +82,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &4716759505538766029
 MonoBehaviour:
@@ -96,9 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a636db8bd833a439da59150cbe8153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData:
-    clientId: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
+  playerId: 1
+  color: {r: 0, g: 1, b: 0.044991016, a: 1}
   rend: {fileID: 7142174261243757371}
 --- !u!114 &5677671305091480164
 MonoBehaviour:
@@ -112,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f5f764c29d37b478f2107a6f364131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 6
   rotationSpeed: 270
   rb: {fileID: 2456579941191409698}
 --- !u!1001 &3591823163001678353

@@ -26,11 +26,8 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
     private float worldToArrayMultiplier;
 
     private int[] ownedFileds;
-    public Color32[] txtValues;
+    private Color32[] txtValues;
     private bool reqiredApply = false;
-
-    public int filledTiles = 0;
-    public Dictionary<int,int> playerScores = new Dictionary<int, int>();
 
     private readonly Dictionary<(int, float), float[,]> shapeCache = new();
 
@@ -61,7 +58,7 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
     {
         while (true)
         {
-            yield return new WaitForSeconds(0.03f);
+            yield return new WaitForSeconds(0.05f);
             if (reqiredApply)
             {
                 reqiredApply = false;
@@ -117,9 +114,6 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
                 if (newValue < fillAcceptTreshhold && ownedFileds[index] == NONE_OWNER)
                 {
                     ownedFileds[index] = playerId;
-                    playerScores.GetOrAddDefault(playerId, () => 0);
-                    playerScores[playerId] ++;
-                    filledTiles += 1;
                     c.r = (byte)Mathf.Lerp(c.r, playerColor32.r, changePercent);
                     c.g = (byte)Mathf.Lerp(c.g, playerColor32.g, changePercent);
                     c.b = (byte)Mathf.Lerp(c.b, playerColor32.b, changePercent);
@@ -165,6 +159,15 @@ public class FloorPainter : SingletonMB<FloorPainter>, ISingletonAutoFind
 
     private void UpdateFillPercent()
     {
+        var filledTiles = 0;
+        foreach (var c in txtValues)
+        {
+            if (c.a < fillAcceptTreshhold)
+            {
+                filledTiles++;
+            }
+        }
+
         FillPercent = filledTiles / (float)txtValues.Length;
         OnFillPercentChange?.Invoke();
     }

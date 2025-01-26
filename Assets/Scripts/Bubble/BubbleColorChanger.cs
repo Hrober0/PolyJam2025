@@ -26,9 +26,9 @@ public class BubbleColorChanger : MonoBehaviour
 
     private void UpdateColor()
     {
-        if (bubble.PlayerData != null)
+        if (bubble.Player != null)
         {
-            SetColor(bubble.PlayerData.Value.color);
+            SetColor(bubble.Player.Color);
         }
     }
 
