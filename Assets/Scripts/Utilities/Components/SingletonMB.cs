@@ -32,7 +32,7 @@ public class SingletonMB<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Assert.IsFalse(Instance && Instance != this);
         Instance = this as T;

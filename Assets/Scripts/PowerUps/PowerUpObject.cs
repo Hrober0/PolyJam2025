@@ -20,6 +20,11 @@ public class PowerUpObject : MonoBehaviour
         config.Apply(player.gameObject);
         OnCollected?.Invoke(this);
 
+        if (PlayFire.Instance != null)
+        {
+            PlayFire.Instance.Active();
+        }
+
         if (destroy)
         {
             transform.DOScale(0, 0.3f).SetEase(Ease.InQuint).OnComplete(() =>
