@@ -8,6 +8,12 @@ public class PowerUpObject : MonoBehaviour
 
     [SerializeField] private PowerUpConfigSO config;
 
+    private void Awake()
+    {
+        transform.localScale = Vector3.zero;
+        transform.DOScale(1, 0.3f).SetEase(Ease.OutQuad);
+    }
+
     public void PickUp(Player player)
     {
         config.Apply(player.gameObject);
