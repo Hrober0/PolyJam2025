@@ -25,13 +25,14 @@ public class PlayerMovement : MonoBehaviour
         rb.MoveRotation(rb.rotation * deltaRotation);
     }
 
-    public void MoveLeft(InputAction.CallbackContext context)
+    public void MoveLeft(InputAction.CallbackContext context) => MoveLeft(context.phase);
+    public void MoveLeft(InputActionPhase action)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (action == InputActionPhase.Performed)
         {
             left = 1;
         }
-        else if (context.phase == InputActionPhase.Canceled)
+        else if (action == InputActionPhase.Canceled)
         {
             left = 0;
         }
@@ -39,13 +40,14 @@ public class PlayerMovement : MonoBehaviour
         SetRotationDirection();
     }
 
-    public void MoveRight(InputAction.CallbackContext context)
+    public void MoveRight(InputAction.CallbackContext context) => MoveRight(context.phase);
+    public void MoveRight(InputActionPhase action)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (action == InputActionPhase.Performed)
         {
             right = 1;
         }
-        else if (context.phase == InputActionPhase.Canceled)
+        else if (action == InputActionPhase.Canceled)
         {
             right = 0;
         }
@@ -53,9 +55,10 @@ public class PlayerMovement : MonoBehaviour
         SetRotationDirection();
     }
 
-    public void MoveBack(InputAction.CallbackContext context)
+    public void MoveBack(InputAction.CallbackContext context) => MoveBack(context.phase);
+    public void MoveBack(InputActionPhase action)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (action == InputActionPhase.Performed)
         {
             reverse *= -1;
             SetMoveDirection();
