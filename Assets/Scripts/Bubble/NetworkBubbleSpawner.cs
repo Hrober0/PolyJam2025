@@ -16,7 +16,7 @@ public class NetworkBubbleSpawner : NetworkBehaviour
     {
         if (IsServer)
         {
-            SpawnBubbleServerRpc(new Vector3(5, 5, 5));
+            SpawnBubbleServerRpc(new Vector3(7.5, 7.5, 7.5));
         }
     }
 
