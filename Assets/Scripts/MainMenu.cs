@@ -1,20 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StatMulti()
-    {
-        SceneManager.LoadScene(Loader.Scene.Lobby.ToString());
-    }
+    [SerializeField] private Button playOnlineButton;
+    [SerializeField] private Button playLocalButton;
+    [SerializeField] private Button exitButton;
 
-    public void StartLocal()
+    private void Start()
     {
-        SceneManager.LoadScene(Loader.Scene.LocalLevel.ToString());
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit(); 
+        playOnlineButton.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene(Loader.Scene.Lobby.ToString());
+        });
+        playLocalButton.onClick.AddListener(() => {
+            SceneManager.LoadScene(Loader.Scene.LocalLevel.ToString());
+        });
+        exitButton.onClick.AddListener(() => {
+            Application.Quit();
+        });
     }
 }

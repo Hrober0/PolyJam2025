@@ -82,7 +82,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!114 &4716759505538766029
 MonoBehaviour:
@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a636db8bd833a439da59150cbe8153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 1
-  color: {r: 0, g: 1, b: 0.044991016, a: 1}
+  playerData:
+    clientId: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
   rend: {fileID: 7142174261243757371}
 --- !u!114 &5677671305091480164
 MonoBehaviour:
