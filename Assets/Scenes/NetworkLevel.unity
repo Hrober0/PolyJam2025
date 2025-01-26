@@ -687,6 +687,7 @@ MonoBehaviour:
   maxActivePowerUps: 2
   powerUps:
   - {fileID: 207985566950897560, guid: 52115c09193f8d34ab2165ace93f9a24, type: 3}
+  - {fileID: 1888940067333720976, guid: 7fb9fbf45c9b2554e9a192b5a40a6129, type: 3}
   spawnRange:
     min: {x: 1, y: 1}
     max: {x: 9, y: 9}
