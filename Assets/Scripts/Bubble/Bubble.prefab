@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubble: {fileID: 1662586386918668305}
   rend: {fileID: 1630089901490067110}
+  parsys: {fileID: 8463844686821205709}
 --- !u!114 &2302725842853203868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,34 +213,6 @@ PrefabInstance:
       value: BublesPArticle
       objectReference: {fileID: 0}
     - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.004
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -250,10 +223,6 @@ PrefabInstance:
     - target: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8979725592720005995, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: lengthInSec
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8979725592720005995, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
       propertyPath: ShapeModule.type
@@ -279,18 +248,6 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 8979725592720005995, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8979725592720005995, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8979725592720005995, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.03529412
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -299,5 +256,10 @@ PrefabInstance:
 --- !u!4 &2669940168960699380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3235397969128953426, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
+  m_PrefabInstance: {fileID: 714939017774333350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8463844686821205709 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8979725592720005995, guid: bcdafd5c9b134264a88933680a80a884, type: 3}
   m_PrefabInstance: {fileID: 714939017774333350}
   m_PrefabAsset: {fileID: 0}

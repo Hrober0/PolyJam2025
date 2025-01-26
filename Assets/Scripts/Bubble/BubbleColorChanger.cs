@@ -5,6 +5,8 @@ public class BubbleColorChanger : MonoBehaviour
     [SerializeField] private Bubble bubble;
     [SerializeField] private Renderer rend;
 
+    [SerializeField] private ParticleSystem parsys;
+
     private MaterialPropertyBlock props;
 
     private void Awake()
@@ -29,8 +31,6 @@ public class BubbleColorChanger : MonoBehaviour
         if (bubble.PlayerData != null)
         {
             SetColor(bubble.PlayerData.Value.color);
-            var cOL = gameObject.transform.GetChild(0).GetComponent<ParticleSystem>().colorOverLifetime;
-            cOL.color = bubble.PlayerData.Value.color;
         }
     }
 
@@ -38,5 +38,7 @@ public class BubbleColorChanger : MonoBehaviour
     {
         props.SetColor("_BaseColor", color);
         rend.SetPropertyBlock(props);
+        var x = parsys.main;
+        x.startColor = color;
     }
 }
