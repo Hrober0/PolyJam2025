@@ -7,6 +7,7 @@ public class PowerUpObject : MonoBehaviour
     public event Action<PowerUpObject> OnCollected;
 
     [SerializeField] private PowerUpConfigSO config;
+    [SerializeField] private bool destroy = true;
 
     private void Awake()
     {
@@ -19,11 +20,14 @@ public class PowerUpObject : MonoBehaviour
         config.Apply(player.gameObject);
         OnCollected?.Invoke(this);
 
-        transform.DOScale(0, 0.3f).SetEase(Ease.InQuint).OnComplete(() =>
+        if (destroy)
         {
-            transform.DOKill();
-            Destroy(gameObject);
-        });
+            transform.DOScale(0, 0.3f).SetEase(Ease.InQuint).OnComplete(() =>
+            {
+                transform.DOKill();
+                Destroy(gameObject);
+            });
+        }
     }
 }
 

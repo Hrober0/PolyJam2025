@@ -747,6 +747,7 @@ MonoBehaviour:
   powerUps:
   - {fileID: 1302184732498547404, guid: a0a187474b621a34dbb7fefebd5befc6, type: 3}
   - {fileID: 6364975100432074963, guid: efb04590e2a578f4eb288880b3a49d51, type: 3}
+  - {fileID: 1302184732498547404, guid: a1b59087477ef0a4b8f0fcfc06e5579d, type: 3}
   spawnRangeX: {x: 1, y: 9}
   spawnRangeY: {x: 1, y: 9}
 --- !u!1 &1065019643

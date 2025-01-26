@@ -34,7 +34,6 @@ public class BubbleColorChanger : MonoBehaviour
 
     private void SetColor(Color color)
     {
-        Debug.Log($"chuj");
         props.SetColor("_BaseColor", color);
         rend.SetPropertyBlock(props);
     }
