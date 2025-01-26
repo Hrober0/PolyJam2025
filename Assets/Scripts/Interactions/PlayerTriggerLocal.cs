@@ -1,18 +1,16 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PowerUpPickUp : MonoBehaviour
+public class PlayerTriggerLocal : MonoBehaviour
 {
-    [SerializeField] private PowerUpConfigSO config;
+    public UnityEvent<Player> OnPlayerEnter;
 
     private void OnTriggerEnter(Collider other)
     {
         var player = other.GetComponentInParent<Player>();
         if (player != null)
         {
-            config.Apply(player.gameObject);
-            Destroy(gameObject);
+            OnPlayerEnter?.Invoke(player);
         }
     }
 }
-

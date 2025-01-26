@@ -1,6 +1,4 @@
 using HCore;
-using System.Collections.Generic;
-using System.Linq;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -9,7 +7,7 @@ public class PowerUpsSpawnerNetworked : NetworkBehaviour
 
     [SerializeField] private float timeToSpawn = 5f;
     [SerializeField] private int maxActivePowerUps = 2;
-    [SerializeField] private PowerUpPickerNetworked[] powerUps;
+    [SerializeField] private PowerUpObject[] powerUps;
 
     [SerializeField] private MinMax<Vector2> spawnRange;
 
@@ -43,8 +41,9 @@ public class PowerUpsSpawnerNetworked : NetworkBehaviour
         }
     }
 
-    private void OnCollect()
+    private void OnCollect(PowerUpObject obj)
     {
+        obj.OnCollected -= OnCollect;
         activePowerUps--;
     }
 }

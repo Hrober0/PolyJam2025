@@ -610,6 +610,8 @@ MonoBehaviour:
   blurLength: 1
   resolution: 512
   fillAcceptTreshhold: 10
+  txtValues: []
+  filledTiles: 0
 --- !u!1 &801715823
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +686,7 @@ MonoBehaviour:
   timeToSpawn: 5
   maxActivePowerUps: 2
   powerUps:
-  - {fileID: -6170517850214587662, guid: 1bca3a8bf5fc59c41868ce2c0ca112d6, type: 3}
+  - {fileID: 207985566950897560, guid: 52115c09193f8d34ab2165ace93f9a24, type: 3}
   spawnRange:
     min: {x: 1, y: 1}
     max: {x: 9, y: 9}

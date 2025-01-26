@@ -692,6 +692,8 @@ MonoBehaviour:
   blurLength: 1
   resolution: 512
   fillAcceptTreshhold: 10
+  txtValues: []
+  filledTiles: 0
 --- !u!1 &1047866527
 GameObject:
   m_ObjectHideFlags: 0
