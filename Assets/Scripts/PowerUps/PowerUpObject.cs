@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using UnityEngine;
 
@@ -12,7 +13,11 @@ public class PowerUpObject : MonoBehaviour
         config.Apply(player.gameObject);
         OnCollected?.Invoke(this);
 
-        Destroy(gameObject);
+        transform.DOScale(0, 0.3f).SetEase(Ease.InQuint).OnComplete(() =>
+        {
+            transform.DOKill();
+            Destroy(gameObject);
+        });
     }
 }
 
