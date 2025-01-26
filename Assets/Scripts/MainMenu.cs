@@ -5,12 +5,12 @@ public class MainMenu : MonoBehaviour
 {
     public void StatMulti()
     {
-        SceneManager.LoadScene("MultiplayerGame");
+        SceneManager.LoadScene("Lobby");
     }
 
     public void StartLocal()
     {
-        SceneManager.LoadScene("CleaningTest");
+        SceneManager.LoadScene("RumbaSelect");
     }
 
     public void ExitGame()
