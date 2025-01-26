@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     {
         props = new();
         rend.GetPropertyBlock(props);
+        UpdateColor();
     }
 
     private void UpdateColor()

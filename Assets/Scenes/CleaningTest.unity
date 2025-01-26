@@ -495,6 +495,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4827709528147109234, guid: 931679e0e5e43c2459a8b71807ef260a, type: 3}
+      propertyPath: playerData.color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827709528147109234, guid: 931679e0e5e43c2459a8b71807ef260a, type: 3}
+      propertyPath: playerData.color.g
+      value: 0.18741083
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827709528147109234, guid: 931679e0e5e43c2459a8b71807ef260a, type: 3}
+      propertyPath: playerData.color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827709528147109234, guid: 931679e0e5e43c2459a8b71807ef260a, type: 3}
+      propertyPath: playerData.clientId
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5074498078367620616, guid: 931679e0e5e43c2459a8b71807ef260a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.195657
@@ -1558,10 +1574,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble
       objectReference: {fileID: 0}
-    - target: {fileID: 6458261133106726588, guid: cac139eac3d13c743b07f1f99b047f5f, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1575,6 +1587,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4827709528147109234, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
+      propertyPath: playerData.color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827709528147109234, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
+      propertyPath: playerData.color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827709528147109234, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
+      propertyPath: playerData.color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827709528147109234, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
+      propertyPath: playerData.clientId
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5074498078367620616, guid: ec74482cd715d4846afb6f1f7297cdd0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.69
